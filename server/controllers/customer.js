@@ -50,4 +50,23 @@ const AddCutomer = (req, res) => {
   });
 };
 
-module.exports = { GetCustomers, AddCutomer };
+
+
+//Get Customers Details
+const GetCustomerDetail = (req, res) => {
+  const id = req.params.id;
+  const custId = req.params.custid;
+
+  const q =
+    "SELECT * FROM `tg_customer_master` WHERE id = ? AND sm_id = ? ORDER by id DESC";
+
+  conn.query(q, [custId,id], (err, data) => {
+    if (err) {
+      res.status(500).json({ msg: "Data Error" });
+    } else {
+      res.status(200).json(data);
+    }
+  });
+};
+
+module.exports = { GetCustomers, AddCutomer, GetCustomerDetail };

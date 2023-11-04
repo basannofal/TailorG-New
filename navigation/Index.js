@@ -7,6 +7,7 @@ import Shoproute from "./routes/Shoproute";
 import Authroute from "./routes/Authroute";
 import Onboardingroute from "./routes/Onboardingroute";
 import Customerroute from "./routes/Customerroute";
+import CustomerTab from "./CustomerTab";
 
 const Index = () => {
   const Stack = createNativeStackNavigator();
@@ -83,6 +84,7 @@ const Index = () => {
           <>
             <Stack.Screen name="Shoproute" component={Shoproute} />
             <Stack.Screen name="Customerroute" component={Customerroute} />
+            <Stack.Screen name="Customer View" component={CustomerTab}  options={{ headerShown: false, statusBarColor: "#000", }} />
           </>
         )}
       </Stack.Navigator>

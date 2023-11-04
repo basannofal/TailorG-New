@@ -1,10 +1,11 @@
 import React from "react";
-import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { MaterialCommunityIcons, AntDesign } from "@expo/vector-icons";
 import { responsiveFontSize } from "react-native-responsive-dimensions";
-import CostomerInfo from "./CostomerInfo"; // Make sure to import the necessary components.
+import CustomerDetail from "../screens/Customer/CustomerDetail";
+import { useFonts } from 'expo-font/build/FontHooks';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-const Tab = createMaterialTopTabNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function CustomerTab({ route }) {
   // Your CustomerTab component code here...
@@ -64,7 +65,7 @@ export default function CustomerTab({ route }) {
           tabBarActiveTintColor: "#fff",
           tabBarActiveBackgroundColor: "#56BC1F",
         }}
-        component={CostomerInfo}
+        component={CustomerDetail}
         initialParams={{ id: id, obid: obid }}
       />
       <Tab.Screen
@@ -83,7 +84,7 @@ export default function CustomerTab({ route }) {
           tabBarActiveTintColor: "#fff",
           tabBarActiveBackgroundColor: "#56BC1F",
         }}
-        component={CostomerMeasure}
+        component={CustomerDetail}
         initialParams={{ id: id, obid: obid }}
       />
 
@@ -104,7 +105,7 @@ export default function CustomerTab({ route }) {
           tabBarActiveTintColor: "#fff",
           tabBarActiveBackgroundColor: "#56BC1F",
         }}
-        component={CostomerOrder}
+        component={CustomerDetail}
         initialParams={{ id: id, obid: obid }}
       />
     </Tab.Navigator>

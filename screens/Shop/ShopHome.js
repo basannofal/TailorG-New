@@ -85,8 +85,8 @@ const ShopHome = React.memo(({ route }) => {
   const searchdata = (text) => {
     if (text) {
       const newdata = data.filter((item) => {
-        const itemdata = item.cname
-          ? item.cname.toUpperCase()
+        const itemdata = item.cus_name
+          ? item.cus_name.toUpperCase()
           : "".toUpperCase();
         const textdata = text.toUpperCase();
         return itemdata.indexOf(textdata) > -1;
@@ -194,7 +194,7 @@ const ShopHome = React.memo(({ route }) => {
             {filterdata != "" ? (
               <FlatList
                 data={filterdata}
-                keyExtractor={(item) => item._id}
+                keyExtractor={(item) => item.id}
                 // inverted
                 showsVerticalScrollIndicator={false}
                 renderItem={({ item }) => (
@@ -202,9 +202,9 @@ const ShopHome = React.memo(({ route }) => {
                     <TouchableOpacity
                       style={styles.flexstart}
                       onPress={() => {
-                        navigation.navigate("Costomer Detail", {
+                        navigation.navigate("Customer View", {
                           id: id,
-                          obid: item._id,
+                          obid: item.id,
                         }),
                           setsearch("");
                       }}
