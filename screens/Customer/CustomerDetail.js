@@ -64,39 +64,30 @@ const CustomerDetail = ({ route }) => {
         console.log(response);
       }
     } catch (error) {
-      console.log(error);
       window.alert(error.response.data.msg);
     }
   };
 
-  
   // Detele Customer
   const Deletecustomer = async () => {
     alertvisible();
     try {
       const id = route.params.id;
       const custId = route.params.obid;
-      const res = await fetch(
-        `https://valudas.com/api/customerdelete/${id}/${custId}`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
+      const response = await axios.delete(
+        `${process.env.EXPO_PUBLIC_API_URL}/deletecustomer/${id}/${custId}`
       );
 
-      const data = await res.json();
-      if (!data) {
-        window.alert("error in get data");
-      } else {
-        await AsyncStorage.setItem("alldata", JSON.stringify(data));
+      if (response.status === 200) {
         navigation.navigate("Home", {
           id: id,
         });
+      } else {
+        console.log(response);
+        window.alert("Something Went Wrong");
       }
-    } catch (e) {
-      window.alert("Something Went Wrong");
+    } catch (err) {
+      window.alert(err.response.data.msg);
     }
   };
   const navigation = useNavigation();
@@ -177,8 +168,8 @@ const CustomerDetail = ({ route }) => {
                       style={[styles.headericon]}
                       onPress={() => {
                         navigation.navigate("Costomer Detail Edit", {
-                          id: id,
-                          obid: customerid,
+                          id: req.params.id,
+                          obid: req.params.obid,
                         });
                       }}
                     >
@@ -220,7 +211,7 @@ const CustomerDetail = ({ route }) => {
                     },
                   ]}
                 >
-                  {customer.cname}{" "}
+                  {customer.cus_name}{" "}
                 </Text>
 
                 <View style={{ marginTop: responsiveHeight(2) }}>
@@ -236,7 +227,7 @@ const CustomerDetail = ({ route }) => {
                   >
                     Mobile Number
                   </Text>
-                  {customer.cphone === null ? (
+                  {customer.cus_number === '' ? (
                     <View
                       style={[
                         styles.flexstart,
@@ -279,12 +270,12 @@ const CustomerDetail = ({ route }) => {
                           },
                         ]}
                       >
-                        +91 {customer.cphone}
+                        +91 {customer.cus_number}
                       </Text>
                       <TouchableOpacity
                         style={{ marginLeft: responsiveWidth(2) }}
                         onPress={() => {
-                          Phone(customer.cphone);
+                          Phone(customer.cus_number);
                         }}
                       >
                         <Feather name="phone-call" size={18} color="#4a4a48" />
@@ -295,78 +286,7 @@ const CustomerDetail = ({ route }) => {
                           marginRight: responsiveWidth(3),
                         }}
                         onPress={() => {
-                          Whatsapp(customer.cphone);
-                        }}
-                      >
-                        <FontAwesome
-                          name="whatsapp"
-                          size={18}
-                          color="#56BC1F"
-                        />
-                      </TouchableOpacity>
-                    </View>
-                  )}
-
-                  {customer.optcphone === null ? (
-                    <View
-                      style={[
-                        styles.flexstart,
-                        {
-                          marginLeft: responsiveWidth(4),
-                          marginTop: responsiveHeight(1),
-                        },
-                      ]}
-                    >
-                      <Text
-                        style={[
-                          styles.desctext,
-                          {
-                            fontSize: responsiveFontSize(2),
-                            color: "#333232",
-                            fontFamily: "Regular",
-                          },
-                        ]}
-                      >
-                        No Number
-                      </Text>
-                    </View>
-                  ) : (
-                    <View
-                      style={[
-                        styles.flexstart,
-                        {
-                          marginLeft: responsiveWidth(4),
-                          marginTop: responsiveHeight(1),
-                        },
-                      ]}
-                    >
-                      <Text
-                        style={[
-                          styles.desctext,
-                          {
-                            fontSize: responsiveFontSize(2),
-                            color: "#333232",
-                            fontFamily: "Regular",
-                          },
-                        ]}
-                      >
-                        +91 {customer.optcphone}
-                      </Text>
-                      <TouchableOpacity
-                        style={{ marginLeft: responsiveWidth(2) }}
-                        onPress={() => {
-                          Phone(customer.optcphone);
-                        }}
-                      >
-                        <Feather name="phone-call" size={18} color="#4a4a48" />
-                      </TouchableOpacity>
-                      <TouchableOpacity
-                        style={{
-                          marginLeft: responsiveWidth(3),
-                          marginRight: responsiveWidth(3),
-                        }}
-                        onPress={() => {
-                          Whatsapp(customer.optcphone);
+                          Whatsapp(customer.cus_number);
                         }}
                       >
                         <FontAwesome
@@ -393,7 +313,7 @@ const CustomerDetail = ({ route }) => {
                     Email
                   </Text>
 
-                  {customer.cemail === "" ? (
+                  {customer.cus_email === "" ? (
                     <View
                       style={[
                         styles.flexstart,
@@ -436,7 +356,7 @@ const CustomerDetail = ({ route }) => {
                           },
                         ]}
                       >
-                        {customer.cemail}
+                        {customer.cus_email}
                       </Text>
                     </View>
                   )}
@@ -456,7 +376,7 @@ const CustomerDetail = ({ route }) => {
                     Address
                   </Text>
 
-                  {customer.caddress === "" ? (
+                  {customer.cus_address === "" ? (
                     <View
                       style={[
                         styles.flexstart,
@@ -499,7 +419,7 @@ const CustomerDetail = ({ route }) => {
                           },
                         ]}
                       >
-                        {customer.caddress}
+                        {customer.cus_address}
                       </Text>
                     </View>
                   )}
@@ -545,7 +465,7 @@ const CustomerDetail = ({ route }) => {
                         { color: "#333232", fontFamily: "Regular" },
                       ]}
                     >
-                      {customer.cname} Orders
+                      {customer.cus_name} Orders
                     </Text>
                   </View>
                   <Text>
@@ -583,7 +503,7 @@ const CustomerDetail = ({ route }) => {
                         { color: "#333232", fontFamily: "Regular" },
                       ]}
                     >
-                      {customer.cname} Measurments
+                      {customer.cus_name} Measurments
                     </Text>
                   </View>
                   <Text>
@@ -620,7 +540,7 @@ const CustomerDetail = ({ route }) => {
                     <Text style={[styles.modelAlertlabel]}>Are you sure ?</Text>
 
                     <Text style={[styles.modelalertdec, { marginTop: 10 }]}>
-                      Delete {customer.cname} ?
+                      Delete {customer.cus_name} ?
                     </Text>
 
                     <View

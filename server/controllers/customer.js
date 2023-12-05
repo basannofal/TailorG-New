@@ -69,4 +69,25 @@ const GetCustomerDetail = (req, res) => {
   });
 };
 
-module.exports = { GetCustomers, AddCutomer, GetCustomerDetail };
+
+
+//DeleteCustomer USERS
+const DeleteCustomer = (req, res) => {
+  const id = req.params.id;
+  const custId = req.params.custid;
+
+  const q =
+    "DELETE FROM `tg_customer_master` WHERE id = ? AND sm_id = ?";
+
+  conn.query(q, [custId, id], (err, data) => {
+    if (err) {
+      console.log(err);
+      res.status(500).json({ msg: "Customer Not Delete" });
+    } else {
+      res.status(200).json(data);
+    }
+  });
+};
+
+
+module.exports = { GetCustomers, AddCutomer, GetCustomerDetail, DeleteCustomer };

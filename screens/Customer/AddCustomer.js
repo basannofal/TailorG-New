@@ -31,7 +31,38 @@ const AddCustomer = ({ route }) => {
   const [caddress, setcaddress] = useState("");
   const [cemail, setcemail] = useState("");
   const [isModalVisible, setModalVisible] = useState(false);
+  const [validationErrors, setValidationErrors] = useState({});
+
+  const validateForm = () => {
+    const errors = {};
+
+    if (cname.trim() === "") {
+      errors.cname = "Customer Name is required";
+    }
+
+    if (cphone !== '' && !/^\d{10}$/.test(cphone)) {
+      errors.cphone = "Please enter a valid 10-digit mobile number";
+    }
+
+    if (ccity !== '' && !/^\d{6}$/.test(ccity)) {
+      errors.ccity = "Please enter a valid 6-digit pincode";
+    }
+
+    if (cemail !== '' && !/^\S+@\S+\.\S+$/.test(cemail)) {
+      errors.cemail = "Please enter a valid email address";
+    }
+
+    setValidationErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const navigation = useNavigation();
+
+  const addCust = () => {
+    if(validateForm()){
+      toggleModalVisibility()
+    }
+  }
 
   const toggleModalVisibility = useCallback(() => {
     setModalVisible((prevVisible) => !prevVisible);
@@ -69,8 +100,8 @@ const AddCustomer = ({ route }) => {
   };
 
   const handleConfirm = () => {
-    postdata();
-    toggleModalVisibility();
+      postdata();
+      toggleModalVisibility();
   };
 
   return (
@@ -126,6 +157,9 @@ const AddCustomer = ({ route }) => {
               value={cname}
               onChangeText={(e) => setcname(e)}
             />
+            {validationErrors.cname && (
+              <Text style={styles.errorText}>{validationErrors.cname}</Text>
+            )}
           </View>
 
           <View style={styles.inputfield}>
@@ -136,8 +170,11 @@ const AddCustomer = ({ route }) => {
               maxLength={10}
               keyboardType="numeric"
               value={cphone}
-              onChangeText={(e) => setcphone(e)}
+              onChangeText={(e) => {setcphone(e); validationErrors.cphone = ''}}
             />
+            {validationErrors.cphone && (
+              <Text style={styles.errorText}>{validationErrors.cphone}</Text>
+            )}
           </View>
 
           <View style={styles.inputfield}>
@@ -146,8 +183,11 @@ const AddCustomer = ({ route }) => {
               placeholder="Email"
               style={[styles.input, { borderRadius: responsiveWidth(2) }]}
               value={cemail}
-              onChangeText={(e) => setcemail(e)}
+              onChangeText={(e) => {setcemail(e); validationErrors.cemail = ''}}
             />
+            {validationErrors.cemail && (
+              <Text style={styles.errorText}>{validationErrors.cemail}</Text>
+            )}
           </View>
 
           <View style={styles.inputfield}>
@@ -217,8 +257,11 @@ const AddCustomer = ({ route }) => {
               value={ccity}
               keyboardType="numeric"
               maxLength={6}
-              onChangeText={(e) => setccity(e)}
+              onChangeText={(e) => {setccity(e); validationErrors.ccity = ''}}
             />
+            {validationErrors.ccity && (
+              <Text style={styles.errorText}>{validationErrors.ccity}</Text>
+            )}
           </View>
         </View>
         <View style={[{ marginTop: responsiveHeight(3) }]}>
@@ -235,7 +278,7 @@ const AddCustomer = ({ route }) => {
           ) : (
             <TouchableOpacity
               style={[styles.onlybtn, { marginBottom: responsiveHeight(5) }]}
-              onPress={toggleModalVisibility}
+              onPress={addCust}
             >
               <Text style={styles.onlybtntext}>Add</Text>
             </TouchableOpacity>
