@@ -227,7 +227,7 @@ const CustomerDetail = ({ route }) => {
                   >
                     Mobile Number
                   </Text>
-                  {customer.cus_number === '' ? (
+                  {customer.cus_number === "" ? (
                     <View
                       style={[
                         styles.flexstart,

@@ -165,7 +165,7 @@ const ShopProfile = ({ route }) => {
 
                 <TouchableOpacity
                   onPress={() => {
-                    navigation.navigate("Cloth Type", { id: id });
+                    navigation.navigate("AllDresses", { id: id });
                   }}
                 >
                   <View
@@ -182,7 +182,7 @@ const ShopProfile = ({ route }) => {
                           color="black"
                         />
                       </Text>
-                      <Text style={styles.prolistfont}>Dress Type</Text>
+                      <Text style={styles.prolistfont}>Dresses</Text>
                     </View>
                     <Text>
                       <AntDesign name="right" size={16} color="black" />
@@ -192,7 +192,7 @@ const ShopProfile = ({ route }) => {
 
                 <TouchableOpacity
                   onPress={() => {
-                    navigation.navigate("Cloth Type Part", { id: id });
+                    navigation.navigate("AllMeasurmentParts", { id: id });
                   }}
                 >
                   <View
@@ -209,7 +209,7 @@ const ShopProfile = ({ route }) => {
                           color="black"
                         />
                       </Text>
-                      <Text style={styles.prolistfont}>Measurments Type</Text>
+                      <Text style={styles.prolistfont}>Measurments Parts</Text>
                     </View>
                     <Text>
                       <AntDesign name="right" size={16} color="black" />
