@@ -529,13 +529,7 @@ const CustomerDetail = ({ route }) => {
               >
                 <View style={styles.viewWrapper}>
                   <View style={styles.modalView}>
-                    <View style={styles.modelicon}>
-                      <MaterialCommunityIcons
-                        name="delete-circle"
-                        size={65}
-                        color="#ff4444"
-                      />
-                    </View>
+                    
 
                     <Text style={[styles.modelAlertlabel]}>Are you sure ?</Text>
 

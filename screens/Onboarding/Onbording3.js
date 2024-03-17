@@ -10,7 +10,7 @@ const Onbording3 = () => {
   const navigation = useNavigation();
   const GetStarted = () => {
     AsyncStorage.setItem("hasLaunched", "true"); // Set the flag to true
-    navigation.navigate("Registeration")
+    navigation.navigate("Authroute")
   }
   return (
     

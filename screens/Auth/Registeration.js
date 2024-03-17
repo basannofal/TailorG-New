@@ -141,7 +141,7 @@ const Registeration = () => {
                 },
               ]}
             >
-              <Text style={styles.label}>First Name</Text>
+              <Text style={styles.label}>First Name <Text style={styles.errcolor}>*</Text></Text>
               <TextInput
                 style={styles.input}
                 placeholder="First Name"
@@ -154,7 +154,7 @@ const Registeration = () => {
               <Text style={styles.errorText}>{fnameError}</Text>
             </View>
             <View style={[styles.inputfield, { width: responsiveWidth(40) }]}>
-              <Text style={styles.label}>Last Name</Text>
+              <Text style={styles.label}>Last Name <Text style={styles.errcolor}>*</Text></Text>
               <TextInput
                 style={styles.input}
                 placeholder="Last Name"
@@ -169,7 +169,7 @@ const Registeration = () => {
           </View>
 
           <View style={styles.inputfield}>
-            <Text style={styles.label}>Shop Name</Text>
+            <Text style={styles.label}>Shop Name  <Text style={styles.errcolor}>*</Text></Text>
             <TextInput
               style={styles.input}
               placeholder="Enter Your Shop Name"
@@ -183,7 +183,7 @@ const Registeration = () => {
           </View>
 
           <View style={styles.inputfield}>
-            <Text style={styles.label}>Contact Number</Text>
+            <Text style={styles.label}>Contact Number <Text style={styles.errcolor}>*</Text></Text>
             <TextInput
               style={styles.input}
               placeholder="Enter Your Contact Number"
@@ -199,7 +199,7 @@ const Registeration = () => {
           </View>
 
           <View style={styles.inputfield}>
-            <Text style={styles.label}>Email</Text>
+            <Text style={styles.label}>Email <Text style={styles.errcolor}>*</Text></Text>
             <TextInput
               style={styles.input}
               placeholder="Enter Your Email"
@@ -212,7 +212,7 @@ const Registeration = () => {
             <Text style={styles.errorText}>{emailError}</Text>
           </View>
           <View style={styles.inputfield}>
-            <Text style={styles.label}>Password</Text>
+            <Text style={styles.label}>Password <Text style={styles.errcolor}>*</Text></Text>
             <TextInput
               style={styles.input}
               placeholder="Enter Your Password"

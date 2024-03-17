@@ -209,7 +209,7 @@ const ShopProfile = ({ route }) => {
                           color="black"
                         />
                       </Text>
-                      <Text style={styles.prolistfont}>Measurments Parts</Text>
+                      <Text style={styles.prolistfont}>Body Parts</Text>
                     </View>
                     <Text>
                       <AntDesign name="right" size={16} color="black" />

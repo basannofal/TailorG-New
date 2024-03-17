@@ -130,7 +130,7 @@ export default function HomeStack({ route }) {
       />
 
       <Tab.Screen
-        name="shopprofile"
+        name="Profile"
         options={{
           tabBarIcon: ({ focused }) => {
             return (

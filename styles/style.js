@@ -6,6 +6,8 @@ export const fonts = {
   };
 
 const primaryColor = "#56BC1F"
+const errorColor = "#ff0000"
+
 
 
 
@@ -453,9 +455,12 @@ const styles = StyleSheet.create({
         alignItems:"center",
     },
     errorText : {
-        color:"red",
+        color:errorColor,
         fontSize:responsiveFontSize(1.5),
         marginTop:responsiveHeight(.5)
+    },
+    errcolor : {
+        color:errorColor,
     }
 });
 

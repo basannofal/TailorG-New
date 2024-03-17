@@ -14,7 +14,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { FontAwesome } from "@expo/vector-icons";
-import { styles } from "../../styles/style";
+import { styles } from "../../styles/Home";
 import { Feather } from "@expo/vector-icons";
 import { useFonts } from "expo-font/build/FontHooks";
 import {
@@ -183,7 +183,7 @@ const ShopHome = React.memo(({ route }) => {
                     backgroundColor: "#56BC1F",
                     borderTopRightRadius: 5,
                     borderBottomRightRadius: 5,
-                    paddingVertical: responsiveHeight(1.7),
+                    paddingVertical: responsiveHeight(1.20),
                   }}
                 >
                   <AntDesign name="search1" size={24} color="#fff" />
@@ -283,12 +283,12 @@ const ShopHome = React.memo(({ route }) => {
                   flexDirection: "column",
                   justifyContent: "center",
                   alignItems: "center",
-                  height: responsiveHeight(55),
+                  height: responsiveHeight(65),
                 }}
               >
                 <Text
                   style={{
-                    fontSize: responsiveFontSize(4),
+                    fontSize: responsiveFontSize(3),
                     opacity: 0.4,
                     fontFamily: "Regular",
                   }}

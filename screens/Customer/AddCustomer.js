@@ -114,7 +114,7 @@ const AddCustomer = ({ route }) => {
           visible={isModalVisible}
           onConfirm={handleConfirm}
           onCancel={() => setModalVisible(false)}
-          message="Are you sure?"
+          message="Add Customer ?"
           title={cname}
           btnname="Add"
         />
