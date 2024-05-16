@@ -58,6 +58,7 @@ const ShopProfile = ({ route }) => {
       if (response.status === 200) {
         setdata(response.data[0]);
         setloading(false);
+        console.log(response.data[0]);
       } else {
         console.log(response);
       }
@@ -114,18 +115,19 @@ const ShopProfile = ({ route }) => {
                 <View style={{ flexDirection: "column", alignItems: "center" }}>
                   <Image
                     style={[styles.profilepic]}
-                    source={require("../../assets/images/shop/a1.png")}
+                    // source={require('../../assets/images/shop/a1.png')}
+                    source={{ uri: 'https://t4.ftcdn.net/jpg/02/14/74/61/360_F_214746128_31JkeaP6rU0NzzzdFC4khGkmqc8noe6h.jpg' }}
                   />
                   <Text
                     style={[
                       styles.titletext,
                       {
-                        marginTop: responsiveHeight(2),
+                        marginTop: responsiveHeight(1),
                         marginBottom: responsiveHeight(1),
                       },
                     ]}
                   >
-                    {data.name}
+                    {data.fname}
                   </Text>
                   <Text style={styles.desctext}>+91 {data.mobile_number}</Text>
                 </View>
@@ -165,7 +167,7 @@ const ShopProfile = ({ route }) => {
 
                 <TouchableOpacity
                   onPress={() => {
-                    navigation.navigate("AllDresses", { id: id });
+                    navigation.navigate("Cloth Type", { id: id });
                   }}
                 >
                   <View
@@ -182,7 +184,7 @@ const ShopProfile = ({ route }) => {
                           color="black"
                         />
                       </Text>
-                      <Text style={styles.prolistfont}>Dresses</Text>
+                      <Text style={styles.prolistfont}>Dress Type</Text>
                     </View>
                     <Text>
                       <AntDesign name="right" size={16} color="black" />
@@ -192,7 +194,7 @@ const ShopProfile = ({ route }) => {
 
                 <TouchableOpacity
                   onPress={() => {
-                    navigation.navigate("AllMeasurmentParts", { id: id });
+                    navigation.navigate("Cloth Type Part", { id: id });
                   }}
                 >
                   <View
@@ -209,7 +211,7 @@ const ShopProfile = ({ route }) => {
                           color="black"
                         />
                       </Text>
-                      <Text style={styles.prolistfont}>Body Parts</Text>
+                      <Text style={styles.prolistfont}>Measurments Type</Text>
                     </View>
                     <Text>
                       <AntDesign name="right" size={16} color="black" />

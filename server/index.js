@@ -2,13 +2,10 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 8001
 const Auth_Route = require("./routes/authRoute");
 const Shop_Route = require("./routes/shopRoute");
 const Customer_Route = require("./routes/customerRoute");
-
-
-
 
 app.use(cors());
 app.use(bodyParser.json());

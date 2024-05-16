@@ -22,7 +22,6 @@ import {
 import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { useFonts } from "expo-font/build/FontHooks";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 
 const CustomerDetail = ({ route }) => {
@@ -162,7 +161,6 @@ const CustomerDetail = ({ route }) => {
                       </Text>
                     </View>
                   </View>
-
                   <View style={[styles.flexstart]}>
                     <TouchableOpacity
                       style={[styles.headericon]}
@@ -529,7 +527,13 @@ const CustomerDetail = ({ route }) => {
               >
                 <View style={styles.viewWrapper}>
                   <View style={styles.modalView}>
-                    
+                    <View style={styles.modelicon}>
+                      <MaterialCommunityIcons
+                        name="delete-circle"
+                        size={65}
+                        color="#ff4444"
+                      />
+                    </View>
 
                     <Text style={[styles.modelAlertlabel]}>Are you sure ?</Text>
 

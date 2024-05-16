@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Login from "../../screens/Auth/Login";
 import Registeration from "../../screens/Auth/Registeration";

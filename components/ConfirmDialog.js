@@ -8,18 +8,14 @@ import React from "react";
 import { Modal, Text, TouchableOpacity, View } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
-const ConfirmDialog = ({
-  visible,
-  onConfirm,
-  onCancel,
-  message,
-  btnname,
-  title,
-}) => {
+const ConfirmDialog = ({ visible, onConfirm, onCancel, message, btnname, title }) => {
   return (
     <Modal animationType="slide" transparent visible={visible}>
       <View style={styles.viewWrapper}>
         <View style={styles.modalView}>
+          <View style={styles.modelicon}>
+            <AntDesign name="questioncircle" size={55} color="#f0aa02" />
+          </View>
           <Text style={[styles.modelAlertlabel]}>{title}</Text>
           <Text style={[styles.modelalertdec, { marginTop: 10 }]}>
             {message}
@@ -37,9 +33,7 @@ const ConfirmDialog = ({
               style={[
                 styles.modelAlertbtn,
                 {
-                  backgroundColor: "#fff",
-                  borderColor: "#ff4444",
-                  borderWidth: 1,
+                  backgroundColor: "#ff4444",
                   marginRight: responsiveWidth(3.4),
                   paddingVertical: responsiveHeight(1),
                 },
@@ -57,7 +51,7 @@ const ConfirmDialog = ({
                 <Text
                   style={{
                     fontSize: responsiveFontSize(2.3),
-                    color: "#000",
+                    color: "#ffffff",
                     fontWeight: "bold",
                   }}
                 >

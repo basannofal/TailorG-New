@@ -1,5 +1,4 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Onbording1 from "../screens/Onboarding/Onbording1";
 import Onbording2 from "../screens/Onboarding/Onbording2";

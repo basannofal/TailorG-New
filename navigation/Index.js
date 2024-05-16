@@ -8,6 +8,9 @@ import Authroute from "./routes/Authroute";
 import Onboardingroute from "./routes/Onboardingroute";
 import Customerroute from "./routes/Customerroute";
 import CustomerTab from "./CustomerTab";
+import OrderTab from "./OrderTab";
+import OrderView from "../screens/Order/OrderView";
+import AddOrder from "../screens/Order/AddOrder";
 
 const Index = () => {
   const Stack = createNativeStackNavigator();
@@ -84,7 +87,10 @@ const Index = () => {
           <>
             <Stack.Screen name="Shoproute" component={Shoproute} />
             <Stack.Screen name="Customerroute" component={Customerroute} />
-            <Stack.Screen name="Customer View" component={CustomerTab}  options={{ headerShown: false, statusBarColor: "#000", }} />
+            <Stack.Screen name="Customer View" component={CustomerTab} options={{ headerShown: false, statusBarColor: "#000", }} />
+            <Stack.Screen name="Order View" component={OrderTab} options={{ headerShown: false, statusBarColor: "#000", }} />
+            <Stack.Screen name="OrderPath" component={OrderView} options={{ headerShown: false, statusBarColor: "#000", }} />
+            <Stack.Screen name="Addorder" component={AddOrder} options={{ headerShown: false, statusBarColor: "#000", }} />
           </>
         )}
       </Stack.Navigator>

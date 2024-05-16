@@ -20,18 +20,18 @@ const Login = () => {
   const navigation = useNavigation();
 
   // Globel State Management
-  const {  loginState, authContext } = React.useContext(AuthContext);
-  
+  const { loginState, authContext } = React.useContext(AuthContext);
 
   // Login Submit Data
   const Postdata = async () => {
     try {
       const userData = { email, pass };
+      console.log(process.env.EXPO_PUBLIC_API_URL);
       const response = await axios.post(
         `${process.env.EXPO_PUBLIC_API_URL}/login`,
         userData
       );
-      
+
       if (response.status === 200) {
         const id = response.data[0].id;
         loginhandler(id, email);
@@ -39,9 +39,8 @@ const Login = () => {
         console.log(response);
       }
     } catch (error) {
-      window.alert(error.response.data.msg)
+      window.alert(error.response.data.msg);
     }
-
   };
 
   // login Handler
@@ -51,8 +50,6 @@ const Login = () => {
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-   
-
       <View style={[styles.container, { height: responsiveHeight(100) }]}>
         <View style={styles.loginHead}>
           <View style={styles.loginHeadText}>
@@ -101,7 +98,9 @@ const Login = () => {
 
           <View style={[styles.bottom, { marginTop: responsiveHeight(15) }]}>
             <Text style={styles.bottomText}>Don't have an Account ? </Text>
-            <TouchableOpacity onPress={() => navigation.navigate("Registeration")}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Registeration")}
+            >
               <Text style={styles.link}>Sign Up</Text>
             </TouchableOpacity>
           </View>

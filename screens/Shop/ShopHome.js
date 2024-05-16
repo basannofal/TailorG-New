@@ -14,7 +14,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { FontAwesome } from "@expo/vector-icons";
-import { styles } from "../../styles/Home";
+import { styles } from "../../styles/style";
 import { Feather } from "@expo/vector-icons";
 import { useFonts } from "expo-font/build/FontHooks";
 import {
@@ -183,7 +183,7 @@ const ShopHome = React.memo(({ route }) => {
                     backgroundColor: "#56BC1F",
                     borderTopRightRadius: 5,
                     borderBottomRightRadius: 5,
-                    paddingVertical: responsiveHeight(1.20),
+                    paddingVertical: responsiveHeight(1.7),
                   }}
                 >
                   <AntDesign name="search1" size={24} color="#fff" />
@@ -214,23 +214,23 @@ const ShopHome = React.memo(({ route }) => {
                           styles.avtar,
                           { marginLeft: responsiveWidth(1) },
                         ]}
-                        source={require("../../assets/images/shop/customericon.png")}
+                        source={require('../../assets/images/shop/customericon.png')}
                       />
 
                       <View
                         style={{
                           width: responsiveWidth(40),
                           marginHorizontal: responsiveWidth(3),
-                          paddingLeft:responsiveWidth(1)
+                          paddingLeft: responsiveWidth(1)
                         }}
                       >
                         <Text
                           style={[
                             styles.titletext,
-                            { fontFamily: "Regular", letterSpacing: 0.5,  },
+                            { fontFamily: "Regular", letterSpacing: 0.5, },
                           ]}
                         >
-                          
+
                           {item.cus_name}
                         </Text>
                         <View style={[styles.flexstart, { marginTop: 2 }]}>
@@ -283,12 +283,12 @@ const ShopHome = React.memo(({ route }) => {
                   flexDirection: "column",
                   justifyContent: "center",
                   alignItems: "center",
-                  height: responsiveHeight(65),
+                  height: responsiveHeight(55),
                 }}
               >
                 <Text
                   style={{
-                    fontSize: responsiveFontSize(3),
+                    fontSize: responsiveFontSize(4),
                     opacity: 0.4,
                     fontFamily: "Regular",
                   }}

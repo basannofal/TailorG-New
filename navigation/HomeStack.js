@@ -1,33 +1,36 @@
 // HomeStack.js
-import React from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons, MaterialCommunityIcons, MaterialIcons, AntDesign } from '@expo/vector-icons';
-import { useFonts } from 'expo-font/build/FontHooks';
-import { responsiveFontSize } from 'react-native-responsive-dimensions';
-import Home from '../screens/Home';
-import ShopProfile from '../screens/Shop/ShopProfile';
-import ShopHome from '../screens/Shop/ShopHome';
-
-
+import React from "react";
+import { useNavigation } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import {
+  Ionicons,
+  MaterialCommunityIcons,
+  MaterialIcons,
+  AntDesign,
+} from "@expo/vector-icons";
+import { useFonts } from "expo-font/build/FontHooks";
+import { responsiveFontSize } from "react-native-responsive-dimensions";
+import ShopProfile from "../screens/Shop/ShopProfile";
+import ShopHome from "../screens/Shop/ShopHome";
+import Order from "../screens/Order/Order";
+import UrgentDetail from "../screens/Urgent/UrgentDetail";
+import ActiveOrder from "../screens/Order/ActiveOrder";
 
 const Tab = createBottomTabNavigator();
 
 export default function HomeStack({ route }) {
   const navigation = useNavigation();
   const [Fontloaded] = useFonts({
-    'Bold': require('../assets/Font/Roboto-Bold.ttf'),
-    'Regular': require('../assets/Font/Roboto-Regular.ttf'),
+    Bold: require("../assets/Font/Roboto-Bold.ttf"),
+    Regular: require("../assets/Font/Roboto-Regular.ttf"),
   });
 
   if (!Fontloaded) {
     return null;
   }
-  console.log(route.params.id);
   const id = route.params.id;
 
   if (route.params) {
-    console.log(route.params);
     console.log("route.params.id");
   } else {
     console.log("No params received in HomeStack");
@@ -41,7 +44,7 @@ export default function HomeStack({ route }) {
         tabBarInactiveTintColor: "#56BC1F",
         tabBarStyle: {
           height: 60,
-          shadowColor: '#000',
+          shadowColor: "#000",
           shadowOpacity: 1,
           shadowRadius: 3,
           elevation: 15,
@@ -59,7 +62,7 @@ export default function HomeStack({ route }) {
       }}
     >
       <Tab.Screen
-        name="Costomer"
+        name="Customer"
         options={{
           tabBarIcon: ({ focused }) => {
             return (
@@ -106,7 +109,7 @@ export default function HomeStack({ route }) {
           tabBarActiveTintColor: "#fff",
           tabBarActiveBackgroundColor: "#56BC1F",
         }}
-        component={Home}
+        component={ActiveOrder}
         initialParams={{ id: id }}
       />
 
@@ -125,12 +128,12 @@ export default function HomeStack({ route }) {
           tabBarActiveTintColor: "#fff",
           tabBarActiveBackgroundColor: "#56BC1F",
         }}
-        component={Home}
+        component={UrgentDetail}
         initialParams={{ id: id }}
       />
 
       <Tab.Screen
-        name="Profile"
+        name="shopprofile"
         options={{
           tabBarIcon: ({ focused }) => {
             return (

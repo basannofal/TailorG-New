@@ -7,7 +7,7 @@ const Customerroute = () => {
   const Stack = createNativeStackNavigator();
 
   // Access the AuthContext
-  const { loginState, authContext } = useContext(AuthContext);
+  const { loginState } = useContext(AuthContext);
 
   const id = loginState.userToken;
 
@@ -23,8 +23,6 @@ const Customerroute = () => {
         component={AddCustomer}
         initialParams={{ id: id }}
       />
-
-     
     </Stack.Navigator>
   );
 };
